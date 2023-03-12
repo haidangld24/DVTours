@@ -823,6 +823,7 @@ app.get("/user/buy-tour/:tourId",function(req,res){
     let messages = [];
     if(isAuthenticated){
         const userId = req.user.id;
+        const isAdmin = req.user.isAdmin;
         Tour.findById(tourId,function(err,foundTour){
             if (err) {
                 console.log(err);
@@ -831,7 +832,7 @@ app.get("/user/buy-tour/:tourId",function(req,res){
                     if (err) {
                         console.log(err);
                     } else {
-                        res.render("buyTour",{tour: foundTour, user : foundUser, errors : errors, messages : messages});
+                        res.render("buyTour",{tour: foundTour, user : foundUser,isAdmin: isAdmin, errors : errors, messages : messages});
                     }
                 })
             }
