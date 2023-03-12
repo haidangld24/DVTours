@@ -1,1 +1,290 @@
 
+body {
+    font-family: 'Montserrat';
+    text-align: center;
+    padding: 0 0.5rem;
+    height: 100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Montserrat-Bold';
+  
+}
+
+p{
+    color: #8f8f8f;
+}
+
+
+.container-fluid{
+    padding: 0 5% ;
+}
+
+/*========== Header======== */
+.header{
+    background-color: #1F8A70;
+    color: #fff;
+    /* height: 100%; */
+    margin-bottom: 10px;
+}
+
+
+#title {
+    
+    text-align: left;
+}
+
+
+
+.dowload-button{
+    margin: 5% 3% 5% 0;
+}
+
+.navbar{
+    padding:0 0 2rem;
+}
+
+.navbar-brand {
+    font-family: 'Ubuntu';
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.nav-item {
+    padding: 0 18px;
+    font-weight: bold;
+}
+
+.nav-link{
+    font-size: 1.2rem;
+    font-family: 'Montserrat-Light';
+}
+
+.item-content{
+    color: #fff;
+}
+
+.account-button{
+    border: none;
+    color: #fff;
+    background-color: inherit;
+    padding-top: 10px;
+}
+
+
+.account-button:hover{
+    border: none;
+    background-color: inherit;
+    padding-bottom: 10px;
+}
+
+
+/*========== CAROUSEL ======== */
+
+.carousel-item {
+    transition-duration: 0;
+  }
+.prev-button,.next-button{
+    background-color: inherit;
+    border: none;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 5rem;
+  width: 5rem;
+  outline: #ef8172;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: #60d5b8;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: #fff;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: #fff;
+}
+
+
+.indicator{
+    width: 3rem;
+    margin: 0 0.5rem;
+    background-color:black ;
+}
+
+
+
+
+
+/*========== TOURS ======== */
+.dtour{
+    background-color: #1F8A70;
+    margin-top: 10px;
+}
+
+.dtour h3{
+    color: #fff;
+}
+
+.tour-content{
+    text-align: left;
+}
+
+.tour-img{
+    width: 100%;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    object-fit: contain;
+}
+.tour-box{
+    font-family: "Montserrat-Black";
+    margin: 10px 0 10px;
+}
+
+
+
+.tour-detail{
+    background-color: #d0caca;
+    padding: 10px 10px 0;
+    text-align: center;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+
+}
+
+.tour-detail table{
+    width: 100%;
+}
+
+.tour-item-left{
+    text-align: left;
+    width: 50%;
+    padding: 1%;
+}
+.tour-item-right{
+    text-align: left;
+    padding: 1%;
+}
+
+.seemore-btn{
+    text-align: center;
+    font-size: large;
+    color: black;
+    line-height: 1rem;
+    background-color: inherit;
+    width: 20%;
+    min-width: 200px;
+    border: solid #1F8A70 ;
+    margin: 1rem auto
+}
+.seemore-btn:hover{
+    color: black;
+    background-color: inherit;
+}
+
+/*========== FOOTER ======== */
+
+.footer {
+    padding: 1% 0;
+    margin-bottom: 0;
+    background-color: #1F8A70;
+    width: 100%;
+}
+
+.footer p{
+    color:white
+}
+.social-icon {
+    margin: 20px 10px;
+}
+
+
+/*=========== LOGIN / REGISTER PAGE =========*/
+
+.login-box, .register-box{
+    max-width: 30%;
+    background-color: #fff;
+    margin-bottom: 10%;
+}
+
+.login-box button{
+    margin: 10px auto 0;
+}
+
+
+/*========== ADMIN ======== */
+.adding-box{
+    margin: 5% 0 10%;
+    text-align: left;
+}
+
+.tour-box-btn{
+    margin:10px auto;
+}
+
+.adding-item{
+    margin:10px 0;
+}
+
+.alltours-box{
+    margin: 20px auto 5%;
+    height: 400px;
+}
+
+
+.alltours-table{
+    padding: 0;
+}
+
+/*========== USER ======== */
+
+.buying-box{
+    margin: 5% 0 10%;
+    text-align: left;
+}
+
+.buying-container{
+    margin: 20px 50px 20px;
+}
+
+.buying-container h3{
+    margin-top: 10px;
+}
+
+.buying-tour-img{
+    width: 100%;
+    border-radius: 5%;
+    object-fit: contain;
+}
+
+.page-nav-box{
+    margin: 30px 0 30px;
+}
+
+.table-box{
+    height: 500px;
+}
+
+/*========== TOURS PAGES ======== */
+
+.tour-schedule-box{
+    text-align: left;
+    margin: 60px 0;
+    font-size: large;
+}
+.tour-page-detail table{
+    width: 100%;
+    font-size: large;
+
+}
+.tour-schedule-box p{
+    color: black;
+}
