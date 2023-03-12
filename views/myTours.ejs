@@ -1,0 +1,43 @@
+<%- include('partials/memberHeader'); %>
+
+  <!-- Domestic tours -->
+    <div class="dtour" id="domestic-tours">
+      <h3>Tour đã đăng ký</h3>
+    </div>
+    <div class="table-box">
+      <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên tour</th>
+                <th>Ngày khởi hành</th>
+                <th>Ngày mua</th>
+                <th>Số chỗ đã đăng ký</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- for each -->
+            <% purchased_tours.forEach(function(tour,index){ %>
+              <tr>
+                <td><%= index %></td>
+                <td><%= tour.tour_name %></td>
+                <td><%= tour.date_string %></td>
+                <td><%= purchased_date[index] %></td>
+                <td><%= purchased_slots[index] %></td>
+                <td><%= purchased_slots[index] * tour.price %> VND</td>
+            </tr>
+            <% }); %>
+            
+            
+            
+        </tbody>
+    </table>
+    </div>
+    
+    
+</div>
+  
+
+    
+<%- include('partials/footer') -%>

@@ -1,0 +1,167 @@
+<% if(isAdmin){ %>
+    <%- include('../../partials/adminHeader'); %>
+  <% } else if (isAuthenticated) { %>
+    <%- include('../../partials/memberHeader'); %>
+  <% } else { %>
+    <%- include('../../partials/header'); %>
+  <% } %>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="buying-tour-img" src="../<%= tour.img_path%>" alt="phu quoc">
+            </div>
+            <div class="col-lg-6">
+                <div class="container-fluid tour-page-detail">
+                    <h2 class="text-center"><%= tour.tour_name%>
+                    </h2>
+                    <br>
+                    <table >
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa fa-info-circle"></i>  Loại tour</td>
+                            <td class="tour-item-right"><%= tour.type%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-clock"></i>  Thời gian</td>
+                            <td class="tour-item-right"><%= tour.days%> </td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Ngày khởi hành</td>
+                            <td class="tour-item-right"><%= tour.date_string%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Số chỗ còn lại</td>
+                            <td class="tour-item-right"><%= tour.available_slots %></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"><i class="fa-solid fa-tag"></i>  Giá</td>
+                            <td class="tour-item-right"><%= tour.price%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"></td>
+                            <td class="tour-item-right"> 
+                                <a href="/user/buy-tour/<%=tour.id%>"><button class="btn btn-primary">Mua Ngay</button> </a>                            
+                            </td>
+                            
+                        </tr>
+                    </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="tour-schedule-box">
+        <!-- Nav tabs  -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#day1">Day 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day2">Day 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day3">Day 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day4">Day 4</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day5">Day 5</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day6">Day 6</a>
+            </li>
+        </ul>
+    
+        <!-- Tab panes -->
+    
+        <div class="tab-content">
+            <div class="tab-pane container-fluid show active alltours-table" id="day1">
+                <div>
+                    <p>
+                        Trưởng đoàn Đất Việt Tour đón đoàn tại Sân bay Quốc Tế Tân Sơn Nhất cổng D2, ga đi quốc tế làm thủ tục đáp chuyến bay JQ 62 SGN-SYD 22:35 – 10:15+1 đi Sydney. Nghỉ đêm trên máy bay.                    
+                    </p>
+                </div>
+            </div>
+    
+            <div class="tab-pane container-fluid fade alltours-table" id="day2">
+                <p>
+                    Máy bay hạ cánh xuống Sân bay Sydney, HDV hướng dẫn Đoàn làm thủ tục nhập cảnh nước Úc và lấy hành lý. Xe và HDV chào đón và đưa Đoàn đi ăn trưa, sau đó tham quan Sydney, thủ phủ của tiểu bang New South Wales với:                
+                </p>
+                <ul>
+                    <li>
+                        Nhà hát Con Sò (Sydney Opera House, chụp hình bên ngoài): Nhà hát có kiến trúc cực kỳ ấn tượng và nổi tiếng của Sydney với ba mặt hướng ra biển.                    
+                    </li>
+                    <li>
+                        Sydney Habour Bridge: Chiếc cầu ấn tượng nối hai bờ Bắc Nam của thành phố không chỉ là biểu tượng của Sydney mà còn là của cả nước Úc. Từ độ cao 130m, du khách có thể ngắm nhìn toàn cảnh vẻ đẹp rực rỡ của thành phố.        
+                    </li>            
+                    <li>
+                        Khu phố cổ The Rocks: Thường được ví von như “bảo tàng Sydney ngoài trời”, bởi nơi đây hội tụ cả quá khứ lẫn hiện tại của thành phố Sydney. Khu The Rocks nằm liền kề với cầu cảng Sydney, là nơi những người da trắng đầu tiên đặt chân đến Úc, bởi thế nơi đây được xem như cội nguồn hình thành nên thành phố Sydney nói riêng và đất nước Úc nói chung.                    
+                    </li>
+                    <li>
+                        Công Viên Hyde: Được đặt tên theo công viên Hyde tại Luân Đôn, Anh. Đây một ốc đảo xanh lá cây tuyệt đẹp giữa lòng thành phố, là địa điểm nghỉ ngơi, thư giãn lý tưởng của người dân địa phương và du khách nước ngoài.                     
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day3">
+                <P>
+                    Đoàn dùng điểm tâm sáng tại khách sạn. Đoàn khởi hành tham quan:                </P>
+                <ul>
+                    <li>
+                        Blue Mountain: Khu bảo tồn thiên nhiên, di sản thế giới, nơi cònlưu giữ nguyên vẹn những nét hoang sơ từ thời thổ dân sinh sống, nổi tiếng với hình núi Ba chị em (Three sisters). Trên đường, Đoàn ghé thăm Wenworth Falls, một khung cảnh ngoạn mục trên thung lũng Jamison, và Leura Village, nổi tiếng với nhiều khu vườn đẹp và các cửa hàng lưu niệm của người địa phương. Ăn trưa tại nhà hàng địa phương.                   
+                    </li>
+                    <li>
+                        Sydney Wildlife Zoo: Nơi bảo tồn những loại động vật quý hiếm hoang dã của Australia. Đoàn tận mắt ngắm nhìn cận cảnh, vui đùa với những chú Kangaroos, đà điểu sa mạc Úc, gấu túi Koala... và chụp ảnh lưu niệm.                    
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day4">
+                <P>
+                    Đoàn dùng điểm tâm tại khách sạn. Sau đó, xe cùng HDV đưa Đoàn ra sân bay, đáp chuyến bay khởi hành đi Melbourne, thành phố lớn thứ hai của nước Úc. Đến nơi, Đoàn tham quan những thắng cảnh đẹp của thành phố:
+                </P>
+                <ul>
+                    <li>
+                        Quảng trường Federation: Quảng trường Federation là trung tâm cộng đồng và không gian công cộng chính của Melbourne. Với tên gọi thân mật là “Quảng trường Fed”, quảng trường này nằm tại trung tâm của Melbourne và cạnh đó là Nhà ga Flinders Street.                     
+                    </li>
+                    <li>
+                        Yarra River Walk: Đoàn có thể tản bộ trên cung đường, ngắm toàn cảnh thành phố, các dãy nhà trọc trời, ngắm đường ray xe lửa trên cao, gần đó là bãi cỏ và hồ ở Royal Botanic Gardens.                    
+                    </li>
+                    <li>
+                        Khu phố nghệ thuật Arts Precinct sẽ cho du khách có cái nhìn toàn cảnh về văn hóa của tầng lớp thượng lưu Melbourne. Arts Precinct có Nhà triển lãm tranh, Trung tâm nghệ thuật Victoria, Phòng hòa nhạc Melbourne, Nhà hát và Viện Bảo tàng nghệ thuật biểu diễn.                    
+                    </li>
+                    <li>
+                        Chợ Nữ hoàng Victoria (Queen Victoria Market): Là một trong những khu chợ trời lớn nhất ở Nam Bán Cầu và chắc chắn là chợ thú vị nhất ở Melbourne, chỉ đóng cửa mỗi thứ Hai và thứ Tư.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day5">
+                <P>Đoàn dùng điểm tâm sáng và trả phòng khách sạn. Đoàn khởi hành tham quan:</P>
+                <ul>
+                    <li>
+                        Đến thăm khu Sovereign Hill, thành phố Ballarat: Bảo tàng ngoài trời hay "bảo tàng sống" độc nhất vô nhị của nước Úc, với những căn nhà thiết kế theo kiến trúc thế kỷ 18, hàng trăm người Úc trong những trang phục thời xưa đang tái hiện hoạt động thường ngày của Ballarat thời ấy.                    
+                    </li>
+                    <li>
+                        Bảo tàng Vàng (Gold Museum): là nơi thu thập, lưu trữ và phân tích nhiều mẫu vật và di sản lịch sử trong những thập kỉ khai thác vàng rầm rộ khắp thị trấn Ballarat. Bảo tàng vốn là một phần của Hiệp hội Bảo tàng Đồi Sovereign và hoạt động song song với điểm du lịch đồi mỏ vàng Sovereign.                   
+                    </li>
+                    <li>
+                        Đoàn ăn tối tại nhà hàng ở địa phương, sau đó, Đoàn về khách sạn nhận phòng và nghỉ ngơi
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day6">
+                <P>
+                    Đoàn dùng bữa sáng ở khách sạn và tự do tham quan, mua sắm hay thăm thân.
+                </P>
+                <p>
+                    Đến giờ, Đoàn làm thủ tục trả phòng. Xe đưa Đoàn ra sân bay. HDV hỗ trợ hướng dẫn đoàn làm thủ tục đáp chuyến bay về lại Tp. HCM.                
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<%- include("../../partials/footer"); -%>

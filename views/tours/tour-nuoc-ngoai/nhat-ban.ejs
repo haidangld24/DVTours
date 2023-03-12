@@ -1,0 +1,160 @@
+
+<% if(isAdmin){ %>
+    <%- include('../../partials/adminHeader'); %>
+  <% } else if (isAuthenticated) { %>
+    <%- include('../../partials/memberHeader'); %>
+  <% } else { %>
+    <%- include('../../partials/header'); %>
+  <% } %>
+  
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="buying-tour-img" src="../<%= tour.img_path%>" alt="Japan">
+            </div>
+            <div class="col-lg-6">
+                <div class="container-fluid tour-page-detail">
+                    <h2 class="text-center"><%= tour.tour_name%>
+                    </h2>
+                    <br>
+                    <table >
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa fa-info-circle"></i>  Loại tour</td>
+                            <td class="tour-item-right"><%= tour.type%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-clock"></i>  Thời gian</td>
+                            <td class="tour-item-right"><%= tour.days%> </td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Ngày khởi hành</td>
+                            <td class="tour-item-right"><%= tour.date_string%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Số chỗ còn lại</td>
+                            <td class="tour-item-right"><%= tour.available_slots %></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"><i class="fa-solid fa-tag"></i>  Giá</td>
+                            <td class="tour-item-right"><%= tour.price%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"></td>
+                            <td class="tour-item-right"> 
+                                <a href="/user/buy-tour/<%=tour.id%>"><button class="btn btn-primary">Mua Ngay</button> </a>                            
+                            </td>
+                            
+                        </tr>
+                    </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="tour-schedule-box">
+        <!-- Nav tabs  -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#day1">Day 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day2">Day 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day3">Day 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day4">Day 4</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day5">Day 5</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day6">Day 6</a>
+            </li>
+        </ul>
+    
+        <!-- Tab panes -->
+    
+        <div class="tab-content">
+            <div class="tab-pane container-fluid show active alltours-table" id="day1">
+                <div>
+                    <p>
+                        Quý khách tập trung tại Sân bay Quốc tế Tân Sơn Nhất. Trưởng đoàn Du lịch Đất Việt đón Quý khách tại sân bay, làm thủ tục xuất cảnh và đáp chuyến bay VJ822 / VN320 đi du lịch Nhật Bản. Quý khách dùng bữa ăn nhẹ trên máy bay.
+                    </p>
+                </div>
+            </div>
+    
+            <div class="tab-pane container-fluid fade alltours-table" id="day2">
+                <p>
+                    Đoàn đến Sân bay quốc tế Narita, HDV địa phương và xe đón đoàn, dùng bữa sáng nhẹ. Bắt đầu chuyến tham quan đất nước mặt trời mọc.
+                </p>
+                <ul>
+                    <li>
+                        Lễ hội Hoa Tulip ở Làng Hà Lan.
+                    </li>
+                    <li>
+                        Viếng chùa Asakusa Kannon - hay còn gọi là Sensō-ji: là ngôi chùa cổ nằm ở Asakusa. Đây là ngôi chùa cổ và quan trọng nhất Nhật Bản. Ngôi chùa được xây dựng dành riêng cho việc thờ phụng Quán Thế Âm Bồ Tát.                      </li>
+                    <li>
+                        Chụp ảnh với tháp Tokyo Sky Tree - biểu tượng mới của Tokyo: đây là tháp truyền hình cao nhất thế giới nằm ở Sumida-ku, Tokyo với chiều cao 634m.
+                    </li>
+                    <li>
+                        Hoàng cung Nhật Bản (tham quan và chụp ảnh bên ngoài): Nằm ở quận Chiyoda, Tokyo, với hơn 100 năm lịch sử, cung điện hiện vẫn là nơi ở của Thiên Hoàng Nhật Bản.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day3">
+                <P>
+                    Đoàn dùng điểm tâm sáng tại khách sạn. Đoàn khởi hành tham quan:                </P>
+                <ul>
+                    <li>
+                        Núi Phú Sĩ - biểu tượng của Nhật Bản, và là nguồn cảm hứng bất tận cho những nghệ sĩ, tác giả và khách du lịch. Trong điều kiện thời tiết cho phép, xe sẽ đưa Quý khách lên Trạm 5 của Núi với độ cao 2.300m. Từ đây du khách chỉ cần ngước mắt là có thể thấy đỉnh núi phủ tuyết hoặc ngắm toàn cảnh vùng Ngũ Hồ Kawaguchi trải dài trong tầm.
+                    </li>
+                    <li>
+                        Làng văn hóa Oshino Hakkai - ngôi làng cổ nằm yên bình dưới chân núi Phú Sĩ. Cho đến ngày nay, những ngôi nhà ở làng Oshino Hakkai vẫn giữ được nét kiến trúc truyền thống Nhật Bản xa xưa. Du khách sẽ được thưởng thức những đặc sản của làng, chắc chắn Oshino Hakkai sẽ là điểm đến thú vị đối với những du khách thích khám phá nếp sống xưa của người Nhật.
+                    </li>
+                    <li>
+                        Ngắm hoa anh đào tại Công viên Hòa Bình Heiwa Koen Gotenba. 
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day4">
+                <P>Đoàn dùng điểm tâm sáng và trả phòng khách sạn. Xe đưa đoàn đi tham quan:</P>
+                <ul>
+                    <li>
+                        Đoàn khởi hành đến tham quan các khu vườn trái cây sạch Nhật Bản. Tại đây, Quý khách có thể tự tay hái và thưởng thức những trái cây tươi ngon như dâu, nho, tao, đào, cherry… tại vườn, tùy mùa tùy nhà vườn (tự túc mua trái cây mang về).                   
+                     </li>
+                    <li>
+                        Chùa Kiyomizudera (Chùa Thanh Thủy): Chùa thờ Phật Quan Âm nghìn tay, được công nhận là Di sản văn hóa cố đô Kyoto và từng là ứng viên bầu chọn Bảy kỳ quan thế giới mới năm 2007.                    
+                    </li>
+                    <li>
+                        Kinkakuji (Golden Pavilon) - ngôi đền được dát vàng thật có lịch sử lâu đời và được Unesco công nhận là di sản văn hóa Thế Giới năm 1994.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day5">
+                <P>Đoàn dùng điểm tâm sáng và trả phòng khách sạn. Đoàn khởi hành tham quan:</P>
+                <ul>
+                    <li>
+                        Lâu đài Osaka - một điểm du lịch nổi tiếng của Nhật Bản và là biểu tượng chính của thành phố Osaka, bao gồm mười ba cấu trúc đã được chỉ định là di sản văn hóa quan trọng của chính phủ Nhật Bản. (chụp hình bên ngoài)                     </li>
+                    <li>
+                        Bảo tàng rượu Sake - nơi trưng bày về quy trình chế biến và các loại rượu sake, loại rượu đóng vai trò quan trọng trong văn hóa Nhật Bản, có lịch trình phát triển hơn 2.000 năm lịch sử.                    </li>
+                    <li>
+                        Tham quan và mua sắm tại Shopping tại Aeon Mall Rinku.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day6">
+                <P>Đoàn dùng điểm tâm sáng tại khách sạn. Trả phòng.</P>
+                <p>
+                    Đến giờ hẹn, xe đưa Quý khách ra Sân bay Quốc tế Kansai đáp chuyến bay về TP.Hồ Chí Minh, trên chuyến bay VJ826/ VN303. Đến Sân bay Tân Sơn Nhất, HDV chia tay Quý khách, kết thúc chương trình tham quan Nhật Bản.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<%- include("../../partials/footer"); -%>

@@ -1,0 +1,117 @@
+
+<%- include("partials/adminHeader"); -%>
+<% if(messages.length != 0){ %>
+    <% messages.forEach(function(message){ %>
+      <div class="alert alert-success" role="alert">
+        <%= message %>
+      </div>
+    <% }); %>
+  <% }; %>
+  <% if(errors.length != 0){ %>
+    <% errors.forEach(function(error){ %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% }); %>
+  <% }; %>
+    <div class="container-fluid adding-box">
+        <h2>THÊM TOUR</h2>
+        <br>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#home">Tour trong nước</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu1">Tour nước ngoài</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane container-fluid show active alltours-table" id="home">
+                <form method="post" action="/admin/add-tour">
+
+                    <div class="form-group adding-item">
+                        <label class="form-label" for="">Địa điểm</label>
+                        <select class="form-select" aria-label="Default select example" name="destination">
+                            <option selected>Open this select menu</option>
+                            <option value="phu-quoc">Phú Quốc</option>
+                            <option value="da-nang">Đà Nẵng</option>
+                            <option value="nha-trang">Nha Trang</option>
+                          </select>
+                    </div>
+        
+                    <div class="form-group">
+                        <label class="form-label" for="">Tên tour</label>
+                        <input type="text" class="form-control" name="name" value="" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="">Ngày khởi hành</label>
+                        <input type="date" class="form-control" name="date" value="" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="">Số ngày</label>
+                        <input type="text" class="form-control" name="days" value="" placeholder="">
+                    </div>
+        
+                    <div class="form-group">
+                        <label class="form-label" for="">Số chỗ</label>
+                        <input type="text" class="form-control" name="slots" value="" placeholder="">
+                    </div>
+        
+                    <div class="form-group">
+                        <label class="form-label" for="">Giá tiền</label>
+                        <input type="text" class="form-control" name="price" value="" placeholder="">
+                    </div>
+        
+                    <button class="btn btn-primary tour-box-btn" name="type" value="tour-trong-nuoc" type="submit">Add</button>
+                </form>
+            </div>
+            <div class="tab-pane container-fluid fade alltours-table" id="menu1">
+                <form method="post" action="/admin/add-tour">          
+
+                    <div class="form-group adding-item">
+                        <label class="form-label" for="">Địa điểm</label>
+                        <select class="form-select" aria-label="Default select example" name="destination">
+                            <option selected>Open this select menu</option>
+                            <option value="australia">Australia</option>
+                            <option value="nhat-ban">Nhật Bản</option>
+                            <option value="ma-sin">Malaysia-Singapore</option>
+                          </select>
+                    </div>
+        
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="">Tên tour</label>
+                        <input type="text" class="form-control" name="name" value="" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="">Ngày khởi hành</label>
+                        <input type="date" class="form-control" name="date" value="" placeholder="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="">Số ngày</label>
+                        <input type="text" class="form-control" name="days" value="" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="">Số chỗ</label>
+                        <input type="text" class="form-control" name="slots" value="" placeholder="">
+                    </div>
+        
+                    <div class="form-group">
+                        <label class="form-label" for="">Giá tiền</label>
+                        <input type="text" class="form-control" name="price" value="" placeholder="">
+                    </div>
+        
+                    <button class="btn btn-primary tour-box-btn" name="type" value="tour-nuoc-ngoai" type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+        
+        
+    </div>
+
+<%- include("partials/footer"); -%>

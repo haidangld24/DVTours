@@ -1,0 +1,77 @@
+
+<%- include("partials/adminHeader"); -%>
+
+
+<div class="container-fluid " >
+    <div class="row" >
+       <div class="col-6" style="text-align: left;">
+            <h3>Tour nước ngoài</h3>
+        
+        </div>
+        <div class="col-6">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="/admin/add-tour"><button class="btn btn-primary me-md-2" type="button">+ Thêm tour</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+<div class="alltours-box">
+    
+
+    <!-- Tab panes -->
+
+    <div class="tab-content">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên tour</th>
+                    <th>Ngày khởi hành</th>
+                    <th>Số chỗ tối đa</th>
+                    <th>Số chỗ còn lại</th>
+                    <th>Giá</th>
+                    <th>Danh sách đăng ký</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% outboundTours.forEach(function(obTour,index){ %>
+                    <tr>
+                        <td><%= (page-1)*perPage+index %></td>
+                        <td><%= obTour.tour_name %></td>
+                        <td><%= obTour.date_string %></td>
+                        <td><%= obTour.max_slots %></td>
+                        <td><%= obTour.available_slots %></td>
+                        <td><%= obTour.price %> VND</td>
+                        <td><a href="/admin/customer-list/<%= obTour._id %>">Xem</a></td>
+                        <td><a href="/admin/delete/tour-nuoc-ngoai/<%= obTour._id %>">Delete</a></td>
+                    </tr>
+                <% }) %>
+
+                
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a class="page-link" href="/admin/all-tours/tour-nuoc-ngoai/<%= prevPage %>">Previous</a>
+              </li>
+              <% for(let i = 1; i <= totalPages ; i ++ ){ %>
+                <!-- NẾU ĐANG Ở TRANG CÙNG VỚI CHỈ SỐ I THÌ THÊM VÀO CLASS CỦA ELEMENT LI "DISABLED" -->
+                <% if(i === page){ %>
+                  <li class="page-item disabled"><a class="page-link" href="/admin/all-tours/tour-nuoc-ngoai/<%= i %>"><%= i %></a></li>
+                <% } else { %>
+                  <li class="page-item"><a class="page-link" href="/admin/all-tours/tour-nuoc-ngoai/<%= i %>"><%= i %></a></li>
+                <% } %>
+                
+              <% }; %>
+              <li class="page-item">
+                <a class="page-link" href="/admin/all-tours/tour-nuoc-ngoai/<%= nextPage %>">Next</a>
+              </li>
+            </ul>
+        </nav>
+</div>
+</div>
+<%- include("partials/footer"); -%>

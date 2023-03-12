@@ -1,0 +1,38 @@
+
+<%- include("partials/adminHeader"); -%>
+    <div class="container-fluid " >
+        <div class="row" >
+        <div class="col-6" style="text-align: left;">
+                <h3>Danh sách đăng ký</h3>
+                <h4> <%= tour.tour_name %> </h4>  
+                <h4>Ngày khởi hành <%= tour.date_string %></h4>     
+            </div>
+        </div>
+    </div>
+<br>
+<hr>
+<div class="alltours-box">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Username</th>
+                <th>Ngày đăng ký</th>
+                <th>Số chỗ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% transactions.forEach(function(transaction,index){ %>
+                <tr>
+                    <td><%= index  %></td>
+                    <td><%= purchased_users[index].username  %></td>
+                    <td><%= transaction.purchase_date_string %></td>
+                    <td><%= transaction.slots  %></td>
+                    <td><a href="/admin/transaction/delete/<%= transaction.id %>">Delete</a></td>
+                </tr>
+            <% }); %>
+            
+        </tbody>
+    </table>
+</div>
+<%- include("partials/footer"); -%>

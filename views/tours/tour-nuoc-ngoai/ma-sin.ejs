@@ -1,0 +1,151 @@
+<% if(isAdmin){ %>
+    <%- include('../../partials/adminHeader'); %>
+  <% } else if (isAuthenticated) { %>
+    <%- include('../../partials/memberHeader'); %>
+  <% } else { %>
+    <%- include('../../partials/header'); %>
+  <% } %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="buying-tour-img" src="../<%= tour.img_path%>" alt="phu quoc">
+            </div>
+            <div class="col-lg-6">
+                <div class="container-fluid tour-page-detail">
+                    <h2 class="text-center"><%= tour.tour_name%>
+                    </h2>
+                    <br>
+                    <table >
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa fa-info-circle"></i>  Loại tour</td>
+                            <td class="tour-item-right"><%= tour.type%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-clock"></i>  Thời gian</td>
+                            <td class="tour-item-right"><%= tour.days%> </td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Ngày khởi hành</td>
+                            <td class="tour-item-right"><%= tour.date_string%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Số chỗ còn lại</td>
+                            <td class="tour-item-right"><%= tour.available_slots %></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"><i class="fa-solid fa-tag"></i>  Giá</td>
+                            <td class="tour-item-right"><%= tour.price%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"></td>
+                            <td class="tour-item-right"> 
+                                <a href="/user/buy-tour/<%=tour.id%>"><button class="btn btn-primary">Mua Ngay</button> </a>                            
+                            </td>
+                            
+                        </tr>
+                    </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="tour-schedule-box">
+        <!-- Nav tabs  -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#day1">Day 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day2">Day 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day3">Day 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day4">Day 4</a>
+            </li>
+            
+        </ul>
+    
+        <!-- Tab panes -->
+    
+        <div class="tab-content">
+            <div class="tab-pane container-fluid show active alltours-table" id="day1">
+                <div>
+                    <p>
+                        05h00: Trưởng đoàn đó quý khách tại sân bay quốc tế Tân Sơn Nhất làm thủ tục khởi hành đi Malaysia chuyến bay dự kiến SGNKUL 0810  1120 
+                    </p>
+                    <p>
+                        Đến sân bay quốc tế Kuala Lumpur, làm thủ tục nhập cảnh. Sau đó xe và hướng dẫn viên địa phương đón và đưa quý khách dùng bữa trưa tại nhà hàng địa phương.
+                    </p>
+                    <p>
+                        Sau bữa trưa xe đưa đoàn khởi hành đến Cảng Port Klang. Đoàn làm thủ tục lên Du Thuyền Genting Dream khám phá các dịch vụ cao cấp trên du thuyền, tự do thư giãn nghỉ ngơi.
+                    </p>
+                    <p>
+                        Quý khách thưởng thức Show biểu diễn đặc sắc tại nhà hát lớn trên Du Thuyền.
+                    </p>
+                </div>
+            </div>
+    
+            <div class="tab-pane container-fluid fade alltours-table" id="day2">
+                <p>
+                    Quý khách dùng bữa sáng trên du thuyền. Khởi đầu ngày mới chắc chắn quý khách có thể ngâm mình trong làn nước mát mẻ hoặc tham gia hoạt động thể thao thú vị. Hãy tận hưởng một ngày sôi động với các hoạt động giải trí trên du thuyền                
+                </p>
+                <ul>
+                    <li>
+                        Công viên nước trên biển - Công viên nước trên đại dương với 6 đường trượt phù hợp cho gia đình và cả những người ưa mạo hiểm với niềm vui bất tận. Bên cạnh đó quý khách cũng có thể tham gia các trò chơi giải trí đặc biệt như zipline đặc biệt, sân Mini-golf, leo núi nhân tạo, bowling…                    
+                    </li>
+                    <li>
+                        Nhiều lựa chọn ẩm thực - tổng cộng 35 nhà hàng và bar ngay cả những yêu cầu về ẩm thực đặc biệt như đồ chay, đồ Ấn Độ. Du thuyền phục vụ ẩm thực Trung Quốc, Nhật Bản, Hàn Quốc, các món ăn Đông Nam Á và rất nhiều loại đồ uống tuyệt vời dành cho những người đam mê ẩm thực.                    
+                    </li>                
+                    <li>
+                        Spa trị liệu và thư giãn trên biển - kết hợp các kỹ thuật truyền thống của Trung Quốc và bấm huyệt trị liệu. Quý khách sẽ được thư giãn đặc biệt trong khi nhấm nháp trái cây tươi, thưởng thức giải trí trên một chiếc iPad cá nhân, hoặc đơn giản là chìm đắm vào sự hồi sinh hạnh phúc.                    
+                    </li>
+                    <li>
+                        Sau đó Quý khách tiếp tục tham quan khu vườn sinh thái đặc biệt mang tên Bay South Garden với hệ thống “siêu cây” năng lượng mặt trời. Khu vườn nằm trong dự án Gardens by the Bay, dự án công viên sinh thái lớn nhất Singapore nhằm nâng cao chất lượng cuộc sống, giữ được màu xanh cho đô thị sầm uất. Toàn bộ dự án có tổng diện tích 101 ha, được chia làm 3 khu riêng biệt là: Bay South, Bay East và Bay Central.                    
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day3">
+                <P>
+                    Quý khách làm thủ tục trả phòng. Xe đón và đưa đoàn về thủ đô Kuala Lumpur, tham quan:                
+                </P>
+                <ul>
+                    <li>
+                        Cung Điện Hoàng Gia (Royal Palace) (chụp hình bên ngoài). Cung điện được xây dựng trên ngọn đồi Jalan Duta phía tây bắc bắc Kuala Lumpur. Với hướng nhìn ra sông kết hợp với  địa thế phong thủy độc đáo "tựa sơn- hứng thủy" đã tạo nên một vẻ đẹp rất riêng.                    
+                    </li>
+                    <li>
+                        Đài Tượng Niệm Quốc Gia (National Monument) - một trong những bức tượng đồng lớn nhất thế giới, cao 15.5 m. Để tưởng niệm 10.000 đã ngã xuống trong chiến tranh thế giới thứ I và thứ II với sự chiếm đóng của Đế quốc Nhật Bản và cuộc chiến với quân Phiến loạn kéo dài 12 năm từ năm 1948 đến 1960.                    
+                    </li>
+                </ul>
+                <p>
+                    Tối: Xe đưa đoàn dùng bữa tối và làm thủ tục nhận phòng khách sạn nghỉ ngơi. Tự do tham quan khám phá thành phố về đêm
+                </p>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day4">
+                <P>
+                    Quý khách dùng bữa sáng và làm thủ tục trả phòng. Xe đưa Quý khách tham quan:                
+                </P>
+                <ul>
+                    <li>
+                        Chùa Thiên Hậu (Thien Hau Temple) - nằm trên đỉnh ngọn đồi Robson, thuộc thủ đô Kuala Lumpur. Với thiết kế độc đáo, ấn tượng, diện tích chùa lên tới 6760m2, chùa Bà Thiên Hậu được đánh giá là ngôi chùa đẹp và lớn nhất Đông Nam Á.                    
+                    </li>
+                    <li>
+                        Khu Putrajaya - Trung Tâm Hành Chính mới (NEW CITY) của Malaysia với những địa danh du lịch nổi tiếng như: Nhà thờ Hồi giáo Putra, Văn phòng Thủ tướng, Trung tâm hội nghị.                    
+                    </li>
+                    <li>
+                        Putrajaya còn được xem là Thành phố thông minh đẳng cấp thế giới và có môi trường làm việc vô cùng hiện đại: không ô nhiễm môi trường, không tệ nạn, không có lạc hậu và dân cư thì được tinh lọc rất kĩ lưỡng.                    
+                    </li>
+                </ul>
+                <p>
+                    Trưa: Đoàn dùng bữa trưa tại nhà hàng địa phương. Xe đưa đoàn ra sân bay làm thủ tục về Việt Nam trên chuyến bay dự kiến KULSGN 1555  1655. Kết thúc chương trình tham quan Hướng dẫn viên chia tay và hẹn gặp lại quý khách trong những chuyến hành trình tiếp theo.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<%- include("../../partials/footer"); -%>

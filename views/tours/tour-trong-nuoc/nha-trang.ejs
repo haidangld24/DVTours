@@ -1,0 +1,121 @@
+
+<% if(isAdmin){ %>
+    <%- include('../../partials/adminHeader'); %>
+  <% } else if (isAuthenticated) { %>
+    <%- include('../../partials/memberHeader'); %>
+  <% } else { %>
+    <%- include('../../partials/header'); %>
+  <% } %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="buying-tour-img" src="../<%= tour.img_path%>" alt="Nha Trang">
+            </div>
+            <div class="col-lg-6">
+                <div class="container-fluid tour-page-detail">
+                    <h2 class="text-center"><%= tour.tour_name%>
+                    </h2>
+                    <br>
+                    <table >
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa fa-info-circle"></i>  Loại tour</td>
+                            <td class="tour-item-right"><%= tour.type%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-clock"></i>  Thời gian</td>
+                            <td class="tour-item-right"><%= tour.days%> </td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Ngày khởi hành</td>
+                            <td class="tour-item-right"><%= tour.date_string%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Số chỗ còn lại</td>
+                            <td class="tour-item-right"><%= tour.available_slots %></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"><i class="fa-solid fa-tag"></i>  Giá</td>
+                            <td class="tour-item-right"><%= tour.price%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"></td>
+                            <td class="tour-item-right"> 
+                                <a href="/user/buy-tour/<%=tour.id%>"><button class="btn btn-primary">Mua Ngay</button> </a>                            
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="tour-schedule-box">
+        <!-- Nav tabs  -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#day1">Day 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day2">Day 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day3">Day 3</a>
+            </li>
+        </ul>
+    
+        <!-- Tab panes -->
+    
+        <div class="tab-content">
+            <div class="tab-pane container-fluid show active alltours-table" id="day1">
+                <div>
+                    <p>
+                        Khi bình mình vừa đến, Đoàn cũng có mặt tại Cam Ranh. Quý khách vệ sinh cá nhân. Dùng điểm tâm sáng tại nhà hàng. Nghỉ ngơi sau chặng di chuyển dài. Đoàn tham quan:
+                    </p>
+                    <ul>
+                        <li> 
+                            Bãi Dài: Với bãi cát dài và mịn màng, khi thủy triều rút, du khách sẽ không khỏi ngạc nhiên khi thấy hiện ra trước mắt là cả một bờ cát trắng trải dài mênh mông. Vào buổi sáng mặt nước bãi dài trong vắt như một tấm thủy tinh phản chiếu. Cả bầu trời như nằm gọn trong lòng biển. Quý khách nhận ghế lều cùng sinh hoạt và tắm biển tự do, thưởng thức hải sản tươi sống, tham gia các môn thể thao trên biển như: Chèo thuyền Kayak, Mô tô nước…( Chi phí tự túc)
+                        </li>
+                        <li>
+                            Khu Tưởng Niệm Chiến Sĩ Gạc Ma: xây dựng tại xã Cam Hải Đông – huyện Cam Lâm, trên tuyến Đại lộ Nguyễn Tất Thành cách trung tâm TP. nơi nàyhơn 20 km. Một địa điểm tâm linh nhằm tưởng nhớ 64 chiến sĩ hải quân Việt Nam đã hy sinh anh dũng trong ngày 14 – 03 – 1998, khi đang thực hiện nhiệm vụ bảo vệ chủ quyền của Tổ quốc tại đảo Gạc Ma thuộc quần đảo Trường Sa.
+                        </li>
+                        <li>
+                            Vinwonders: cano vượt biển đưa du khách đến với khu vui chơi giải trí trong nhà như : Xem phim 4D, xe điện đụng, triển lãm tranh nghệ thuật…kết hợp với khu vui chơi ngoài trời như: Tàu Hải Tặc, Cói Xoay Gió, Vòng Đu Quay, Thủy Cung… Ngoài ra Quý khách có thể tắm biển với bãi biển nhân tạo, hồ bơi trẻ em đẹp nhất Nha Trang. Tham gia chương trình nhạc nước kết hợp ánh sáng hấp dẫn…. (chi phí tự túc)
+                        </li>
+                        <li>
+                            Chùa Long Sơn: “ Ai về ngắm cảnh Khánh Hoà/Long Sơn nên ghé/ Tháp Bà đừng quên/Kim thân Phật tổ nhớ lên/Nhìn ông Phật trắng ngồi trên lưng trời”  Câu ca dao len nhẹ lòng người, dẫn dắt bước chân du khách hành hương lên đồi Trại Thủy vãn cảnh chùa, chiêm bái Kim thân Phật tổ và ngắm nhìn Nha Trang vươn dài theo mép biển.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="tab-pane container-fluid fade alltours-table" id="day2">
+                <p>
+                    Đoàn dùng điểm tâm sáng, bắt đầu khám phá cuộc sống và văn hóa của ngư dân vịnh biển Nha Trang.
+                </p>
+                <ul>
+                    <li>
+                        Vịnh San Hô Cano sẽ đưa quý khách tới tham quan Bè Hải Sản của người dân nơi đây. Tại đây quý khách sẽ được khám phá và tìm hiểu về những loại hải sản, cảm giác hòa mình vào thiên nhiên, được đón nhận những làn gió mát mẻ mang đậm hơi biển đặc trưng của vùng biển. Tiếp tụccano sẽ đưa quý khách đến đảo, quý khách sẽ được trải nghiệm dịch vụ tại khu du lịch bao gồm
+                    </li>
+                    <li>
+                        Tắm Bùn Khoáng Nóng: Lớp bùn khoáng cực mịn được thiên nhiên ưu đãi cho Nha trang. Quý khách thoải mái lựa chọn ngâm bùn khoáng nóng trong bồn gỗ riêng biệt, ngâm bùn khoáng tập thể, ngâm nước khoáng nóng, hồ bơi khoáng ấm, thư giãn dưới thác nước đôi, ôn tuyền thuỷ liệu pháp, vật lý trị liệu, Khoáng Tiên Sa và Hồ Bơi khoáng lạnh… (chi phí tự túc ).
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day3">
+                <P>
+                    Quý khách dùng điểm tâm sáng. Làm thủ tục trả phòng, xe đưa đoàn tham quan:
+                </P>
+                <ul>
+                    <li>
+                        Chợ Đầm: Đây là khu chợ lớn nhất của thành phố Nha Trang. Du khách đến đây không chỉ để mua sắm các loại đặc sản Nha Trang, quà lưu niệm, chiêm ngưỡng các loại sản vật mà còn có cơ hội thưởng thức các món ăn dân giã của người dân ngay tại đây..
+                    </li>
+                </ul>
+                <P> Quý khách dùng bữa trưa tại Cà Ná. Đoàn khởi hành về TP.HCM. Dọc theo quốc lộ, Xe đưa Quý khách dừng chân mua sắm đặc sản địa phương tại các cơ sở uy tín.</P>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+<%- include("../../partials/footer"); -%>

@@ -1,0 +1,135 @@
+
+<% if(isAdmin){ %>
+    <%- include('../../partials/adminHeader'); %>
+  <% } else if (isAuthenticated) { %>
+    <%- include('../../partials/memberHeader'); %>
+  <% } else { %>
+    <%- include('../../partials/header'); %>
+  <% } %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="buying-tour-img" src="../<%= tour.img_path%>" alt="phu quoc">
+            </div>
+            <div class="col-lg-6">
+                <div class="container-fluid tour-page-detail">
+                    <h2 class="text-center"><%= tour.tour_name%>
+                    </h2>
+                    <br>
+                    <table >
+                        <tr>
+                          <td class="tour-item-left"> <i class="fa fa-info-circle"></i>  Loại tour</td>
+                          <td class="tour-item-right"><%= tour.type%></td>
+                        </tr>
+                        <tr>
+                          <td class="tour-item-left"> <i class="fa-regular fa-clock"></i>  Thời gian</td>
+                          <td class="tour-item-right"><%= tour.days%> </td>
+                        </tr>
+                        <tr>
+                          <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Ngày khởi hành</td>
+                          <td class="tour-item-right"><%= tour.date_string%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Số chỗ còn lại</td>
+                            <td class="tour-item-right"><%= tour.available_slots %></td>
+                        </tr>
+                        <tr>
+                          <td class="tour-item-left"><i class="fa-solid fa-tag"></i>  Giá</td>
+                          <td class="tour-item-right"><%= tour.price%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"></td>
+                            <td class="tour-item-right"> 
+                                <a href="/user/buy-tour/<%=tour.id%>"><button class="btn btn-primary">Mua Ngay</button> </a>                            
+                            </td>
+                            
+                        </tr>
+                    </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="tour-schedule-box">
+        <!-- Nav tabs  -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#day1">Day 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day2">Day 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day3">Day 3</a>
+            </li>
+        </ul>
+    
+        <!-- Tab panes -->
+    
+        <div class="tab-content">
+            <div class="tab-pane container-fluid show active alltours-table" id="day1">
+                <div>
+                    <p>
+                        HDV Du Lịch Đất Việt đón khách tại sân bay Tân Sơn Nhất làm thủ tục bay Phú Quốc chuyến bay VJ323 07:30. Đến nơi xe và HDV ở Phú Quốc sẽ đón Quý khách tại sân bay Phú Quốc đưa đoàn về lại trung tâm Dương Đông Phú Quốc. Đoàn dùng bữa sáng tại nhà hàng. (tùy theo giờ bay sẽ sắp xếp ăn sáng cho quý khách).
+                    </p>
+                    <p>
+                        Tiếp chương trình xe đưa du khách đi tham quan: 
+                    </p>
+                    <ul>
+                        <li> 
+                            Dinh Cậu - Dinh Bà: Biểu tượng tín ngưỡng của người dân hải đảo (nơi họ tìm đến khấn nguyện cho mỗi chuyến ra khơi).
+                        </li>
+                        <li>
+                            Làng chài cổ Hàm Ninh: Nơi đây nổi tiếng với nghề đánh bắt lưới ghẹ, cá ngựa, hải sâm, hái rong biển, Quý khách có dịp thưởng thức hải sản tươi vừa đánh bắt với giá gốc.
+                        </li>
+                        <li>
+                            Khám phá Công viên Urban Park: Quy tụ nhiều tác phẩm nghệ thuật độc đáo, mang đậm nét lãng mạn, cổ điển, đậm chất Ý.
+                        </li>
+                        <li>
+                            Khu phố đèn lồng Shanghai: Tọa lạc ngay cổng vào dự án, lấy cảm hứng thiết kế từ những con phố sầm uất của Thượng Hải, khu phố như một China Town thu nhỏ trên đảo Ngọc trù phú.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="tab-pane container-fluid fade alltours-table" id="day2">
+                <p>
+                    Quý khách dùng điểm tâm sáng tại khách sạn. Sau đó xe đưa đoàn đi về phía Nam Đảo Phú Quốc để tham quan:
+                </p>
+                <ul>
+                    <li>
+                        Khu du lịch Hòn Thơm: Quý khách đi cáp treo vượt biển dài nhất Châu Á sang đảo để cùng tắm biển và chiêm ngưỡng vẻ đẹp hoang sơ của biển đảo từ độ cao hơn 100 mét. Tại đảo du khách tha hồ tắm biển và vui chơi tại khu công viên nước (đã được bao gồm). Là hạng mục đầu tiên và quan trọng nhất trong quần thể vui chơi giải trí biển Sun World Hon Thom Nature Park mà Tập đoàn Sun Group đang xây dựng tại Nam đảo, cáp treo Hòn Thơm có tổng chiều dài hơn 7.899m, nối từ thị trấn An Thới qua các đảo Hòn Rỏi, Hòn Dừa tới Hòn Thơm, đem đến cho du lịch Phú Quốc một sản phẩm mới lạ, quy mô và độc đáo.
+                    </li>
+                    <li>
+                        Tắm biển tại Bãi Sao: Một trong những bãi biển với làn nước xanh biếc, bờ cát trắng mịn nổi tiếng tại Phú Quốc. Đến Bãi Sao, Quý khách tự do nghỉ ngơi, vui chơi và tắm biển (phí tắm nước ngọt + võng nằm: chi phí tự túc).
+                    </li>
+                    <li>
+                        Thiền Viện Trúc Lâm Hộ Quốc: Đây là ngôi thiền viện được xây dựng và thờ cúng theo mô hình kiến trúc riêng biệt của phái thiền Trúc Lâm nước ta. Với khuôn viên rộng lớn và bên trong có thờ cúng nhiều tượng phật, các vị la hán đã tạo nên vẻ trang nghiêm cho ngôi thiền viện này. Quý khách tham quan chụp hình cảnh biển và chiêm bái phật Thích Ca cùng tổ sư Đạt Ma. (Trong trường hợp có mưa to, đường xá, giao thông không thuận tiện trong việc xe ra vào đường nhỏ chật hẹp, nguy hiểm thì chúng tôi sẽ bỏ qua địa điểm tham quan này – kính mong Quý khách thông cảm).
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day3">
+                <P>
+                    Quý khách dùng điểm tâm sáng tại khách sạn. Sau đó tắm biển tự do hoặc nghỉ ngơi tự do tại khách sạn. 
+                </P>
+                <P>
+                    Đoàn làm thủ tục trả phòng. Sau đó đến nhà hàng dùng bữa trưa sau đó tham quan:
+                </P>
+                <ul>
+                    <li>
+                        Suối Tranh: khung cảnh thiên nhiên vô cùng tươi mát với các khe nước nhỏ chảy từ đầu nguồn núi Hàm Ninh tạo nên một khung cảnh tuyệt đẹp
+                    </li>
+                    <li>
+                        Cơ sở chế biến nước mắm Phú Quốc: Quý khách tham quan nhà thùng lâu đời và tìm hiểu về quy trình chế biến nước mắm cá cơm truyền thống lâu đời của người dân Phú Quốc. Quý khách có thể mua về làm quà tặng hoặc dùng cho việc nấu ăn trong gia đình hằng ngày.
+                    </li>
+                    <li>
+                        Khu nuôi cấy Ngọc Trai - một trong những nét đặc trưng mà du khách không thể bỏ qua khi đến với Phú Quốc. Quý khách được tìm hiểu về quy trình nuôi cấy ngọc trai, được tận mắt chứng kiến quá trình mỗ trai lấy ngọc và có cơ hội sỡ hữu những sản phẩm ngọc trai chính hiệu mang đến sự may mắn và thịnh vượng.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<%- include("../../partials/footer"); -%>

@@ -1,0 +1,133 @@
+<% if(isAdmin){ %>
+    <%- include('../../partials/adminHeader'); %>
+  <% } else if (isAuthenticated) { %>
+    <%- include('../../partials/memberHeader'); %>
+  <% } else { %>
+    <%- include('../../partials/header'); %>
+  <% } %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="buying-tour-img" src="../<%= tour.img_path%>" alt="Đà Nẵng">
+            </div>
+            <div class="col-lg-6">
+                <div class="container-fluid tour-page-detail">
+                    <h2 class="text-center"><%= tour.tour_name%>
+                    </h2>
+                    <br>
+                    <table >
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa fa-info-circle"></i>  Loại tour</td>
+                            <td class="tour-item-right"><%= tour.type%></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-clock"></i>  Thời gian</td>
+                            <td class="tour-item-right"><%= tour.days%> </td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Ngày khởi hành</td>
+                            <td class="tour-item-right"><%= tour.date_string %></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"> <i class="fa-regular fa-calendar"></i>  Số chỗ còn lại</td>
+                            <td class="tour-item-right"><%= tour.available_slots %></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"><i class="fa-solid fa-tag"></i>  Giá</td>
+                            <td class="tour-item-right"><%= tour.price %></td>
+                        </tr>
+                        <tr>
+                            <td class="tour-item-left"></td>
+                            <td class="tour-item-right"> 
+                                <a href="/user/buy-tour/<%=tour.id%>"><button class="btn btn-primary">Mua Ngay</button> </a>                            
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="tour-schedule-box">
+        <!-- Nav tabs  -->
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#day1">Day 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day2">Day 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day3">Day 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#day4">Day 4</a>
+            </li>
+        </ul>
+    
+        <!-- Tab panes -->
+    
+        <div class="tab-content">
+            <div class="tab-pane container-fluid show active alltours-table" id="day1">
+                <div>
+                    <p>
+                        Sáng: Hướng dẫn viên của công ty Du lịch Đất Việt đón quý khách tại sân bay Tân Sơn Nhất hỗ trợ làm thủ tục lên máy bay để đi Đà Nẵng. Đến Đà Nẵng, xe sẽ đưa quý khách vào trung tâm, theo con đường biển Sơn Trà – ngắm bãi biển Mỹ Khê, đến tham quan tại:
+                    </p>
+                    <ul>
+                        <li> 
+                            Đoàn khởi hành đi tham quan Bán đảo Sơn Trà - một món quà lớn mà thiên nhiên ưu ái ban tặng cho thành phố Đà Nẵng. Mang trong mình một vẻ đẹp nguyên sơ, hữu tình, bãi biển nước trong vắt, những tán cây xanh rợp bóng, nơi đây có không khí trong lành kết hợp cùng nguồn tài nguyên phong phú và là nơi thu hút rất nhiều khách du lịch trên cả nước.
+                        </li>
+                        <li>
+                            Viếng chùa Linh Ứng, được xem là cõi Phật giữa chốn trần gian. Nơi có tượng Quan Âm cao nhất Việt Nam, được xem là một trong “Tứ Trấn Đà thành’
+                        </li>
+                        <li>
+                            Tham quan Ngũ Hành Sơn - Làng Nghề Điêu Khắc Đá Non Nước với các pho tượng bằng Đá được điêu khắc dưới bàn tay tài hoa của nghệ nhân nơi đây.
+                        </li>
+                        <li>
+                            Tiếp tục vào Hội An - nơi mà cuộc sống cứ bình lặng, nơi mà dường như dòng chảy vô tình của thời gian chẳng thể nào vùi lấp đi cái không khí cổ xưa. Những mái ngói cũ phủ đầy rêu phong, những con đường ngập trong sắc đỏ của đèn lồng, những bức hoành phi được chạm trổ tinh vi, tất cả như đưa ta về với một thế giới của vài trăm năm trước.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="tab-pane container-fluid fade alltours-table" id="day2">
+                <p>
+                    Đến Chân núi Bà Nà, quý khách lên cáp treo đạt những kỷ lục thế giới bắt đầu hành trình vui chơi trải nghiệm tại đỉnh Bà Nà - Đỉnh Núi Chúa với độ cao 1487m so với mực nước biển:
+                </p>
+                <ul>
+                    <li>
+                        Quý khách sẽ tận hưởng cảm giác bồng bền khi ngồi trên Cabin lơ lững giữa chừng mây. Viếng chùa Linh Ứng với tượng Phật Thích Ca cao 27m, viếng đền thờ Bà Chúa Mẫu Thượng Ngàn.
+                    </li>
+                    <li>
+                        Fantasy park: Vui chơi trong khu vui chơi giải trí trong nhà lớn nhất Đông Nam Á hiện nay, với hơn 100 trị chơi lớn nhỏ dành cho mọi độ tuổi sẽ làm cho quý khách có những phút thư giãn thoải mãi nhất khi đến với Bà Nà. với các trò chơi phiêu lưu mới lạ như: Vòng Quay Tình Yêu, Phi Công Skiver, Đường Đua Lửa, Ngôi Nhà Ma ,…….
+                    </li>
+                    <li>
+                        Bảo tàng Sáp (tự túc: 100.000đ): một trong những điểm nổi bật tại KDL Bà Nà là nơi tạc những bức tượng sáp của những nhân vật nổi tiếng trên thế giới, rất thú vị.
+                    </li>
+                    <li>
+                        Siêu phẩm Cây cầu Vàng Đà Nẵng trên đỉnh Bà Nà Hill, tuyệt tác này còn được mọi người nhắc đến với cái tên Cầu Bàn Tay – một trong những địa điểm đẹp sống ảo không thể bỏ qua khi đi du lịch Đà Nẵng.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day3">
+                <P>Đoàn khởi hành đi Phong Nha - Kẻ Bàng - Di Sản Thiên Nhiên Thế Giới. Trên đường đi, đoàn viếng thăm Thánh Địa La Vang là một trong những địa điểm hành hương quan trọng không chỉ riêng đồng bào Công giáo, mà còn của cả người không Công giáo và khách du lịch quốc tế. Tiếp đến đoàn dừng chân ngắm nhìn Vĩ tuyến 17 - Cầu Hiền Lương - Sông Bến Hải.   </P>
+                <P>Đến Huế, về khách sạn nghỉ ngơi, tự do thưởng thức đặc sản và tham quan thành phố Huế về đêm.</P>
+            </div>
+
+            <div class="tab-pane container-fluid fade alltours-table" id="day4">
+                <P>Dùng điểm tâm buffet tại khách sạn, làm thủ tục trả phòng.</P>
+                <ul>
+                    <li>
+                        Đoàn tham quan Đại Nội - Kinh Thành Hoàng Cung của 13 vị Vua triều Nguyễn với Ngọ Môn, điện Thái Hoà, Tử Cấm Thành, Thế Miếu, Hiển Lâm Các, Cửu Đỉnh – Đây cũng là một trong những di sản của Việt Nam được UNESCO công nhận là Di sản văn hóa thế giới.
+                    </li>
+                    <li>
+                        Tiếp đến, đoàn viếng Chùa Thiên Mụ, một ngôi chùa cổ nằm trên đồi Hà Khê, tả ngạn sông Hương. Chùa Thiên Mụ là một trong những thắng cảnh đẹp được nhắc đến nhiều nhất tại Huế. Không chỉ đi vào những bài thơ lãng mạn của xứ Huế mà còn trong cả câu ca, Thiên Mụ cũng được coi là một ngôi chùa linh thiêng và những cảnh không thể bỏ qua của bất cứ du khách nào khi đặt chân đến thủ đô cổ xưa này. 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<%- include("../../partials/footer"); -%>

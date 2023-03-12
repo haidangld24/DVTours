@@ -1,0 +1,70 @@
+
+<% if(isAdmin){ %>
+  <%- include('partials/adminHeader'); %>
+<% } else if (isAuthenticated) { %>
+  <%- include('partials/memberHeader'); %>
+<% } else { %>
+  <%- include('partials/header'); %>
+<% } %>
+<% if(messages.length != 0){ %>
+    <% messages.forEach(function(message){ %>
+      <div class="alert alert-success" role="alert">
+        <%= message %>
+      </div>
+    <% }); %>
+  <% }; %>
+  <% if(errors.length != 0){ %>
+    <% errors.forEach(function(error){ %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% }); %>
+  <% }; %>
+    <div class="container-fluid buying-container">
+        <div class="row">
+            <div class="col-6">
+                <img class="buying-tour-img" src="<%= tour.img_path %>" alt="">
+                <h3><%= tour.tour_name %></h3>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid buying-box">
+                    <h2 class="text-center">THÔNG TIN GIAO DỊCH</h2>
+                    <br>
+                    <form class="" method="post" action="/user/buy-tour/<%= tour.id %>">
+                        <div class="form-group">
+                            <label class="form-label" for="">Username</label>
+                            <input type="text" class="form-control text-center" name="username" value="<%= user.username %>" placeholder="" disabled readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="">Tên tour</label>
+                            <input type="text" class="form-control text-center" name="tour_name" value="<%= tour.tour_name %>" placeholder="" disabled readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="">Ngày khởi hành</label>
+                            <input type="text" class="form-control text-center" name="date" value="<%= tour.date_string %>" placeholder="" disabled readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="">Giá</label>
+                            <input type="text" class="form-control text-center" name="price" value="<%= tour.price %>" placeholder="" disabled readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="">Số chỗ</label>
+                            <input type="number" class="form-control" name="slots" value="" placeholder="" >
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="btn btn-primary tour-box-btn" type="submit">Mua</button>
+                        </div>
+                        
+                    </form>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+        
+    </div>
+
+<%- include("partials/footer"); -%>
