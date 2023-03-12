@@ -832,7 +832,9 @@ app.get("/user/buy-tour/:tourId",function(req,res){
                     if (err) {
                         console.log(err);
                     } else {
-                        res.render("buyTour",{tour: foundTour, user : foundUser,isAdmin: isAdmin, errors : errors, messages : messages});
+                        res.render("buyTour",{tour: foundTour, user : foundUser,isAdmin: isAdmin, errors : errors,
+                            messages : messages,
+                            isAuthenticated:isAuthenticated});
                     }
                 })
             }
