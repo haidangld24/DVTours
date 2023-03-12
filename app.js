@@ -80,10 +80,9 @@ passport.deserializeUser(function(user, cb) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://dvtours.onrender.com/auth/google/callback"
+    callbackURL: "http://localhost:3000/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    console.log(profile);
     User.findOrCreate({ googleId: profile.id, username: profile._json.email }, function (err, user) {
       return cb(err, user);
     });
@@ -105,7 +104,7 @@ app.get("/", function(req,res){
                 let isAdmin = foundUser.isAdmin;
                 Tour.find({type: "tour-trong-nuoc"}).sort({date: 'desc'}).limit(8).exec((err,foundTours)=>{
                     if (err) {
-                        console.log();
+                        console.log(err);
                     } else {
                         domesticTours = foundTours;
                         Tour.find({type : "tour-nuoc-ngoai"}).sort({date: 'desc'}).limit(8).exec((err,tours)=>{
@@ -126,7 +125,7 @@ app.get("/", function(req,res){
         //render trường hợp chưa đăng nhập
         Tour.find({type: "tour-trong-nuoc"}).sort({date: 'desc'}).limit(8).exec((err,foundTours)=>{
             if (err) {
-                console.log();
+                console.log(err);
             } else {
                 domesticTours = foundTours;
                 Tour.find({type : "tour-nuoc-ngoai"}).sort({date: 'desc'}).limit(8).exec((err,tours)=>{
@@ -162,7 +161,7 @@ app.get("/tours/tour-trong-nuoc/:page",function(req,res){
                 let isAdmin = foundUser.isAdmin;
                 Tour.find({type: "tour-trong-nuoc"}).sort({date: 'desc'}).limit(perPage).skip(skipPages).exec((err,foundTours)=>{
                     if (err) {
-                        console.log();
+                        console.log(err);
                     } else {
                         domesticTours = foundTours;
                         // TÌM SỐ PAGES PHẢI TẠO
@@ -207,7 +206,7 @@ app.get("/tours/tour-trong-nuoc/:page",function(req,res){
         //render trường hợp chưa đăng nhập
         Tour.find({type: "tour-trong-nuoc"}).sort({date: 'desc'}).limit(perPage).skip(skipPages).exec((err,foundTours)=>{
             if (err) {
-                console.log();
+                console.log(err);
             } else {
                 domesticTours = foundTours;
                 // TÌM SỐ PAGES PHẢI TẠO
@@ -265,7 +264,7 @@ app.get("/tours/tour-nuoc-ngoai/:page",function(req,res){
                 let isAdmin = foundUser.isAdmin;
                 Tour.find({type: "tour-nuoc-ngoai"}).sort({date: 'desc'}).limit(perPage).skip(skipPages).exec((err,foundTours)=>{
                     if (err) {
-                        console.log();
+                        console.log(err);
                     } else {
                         outboundTours = foundTours;
                         // TÌM SỐ PAGES PHẢI TẠO
@@ -309,7 +308,7 @@ app.get("/tours/tour-nuoc-ngoai/:page",function(req,res){
         //render trường hợp chưa đăng nhập
         Tour.find({type: "tour-nuoc-ngoai"}).sort({date: 'desc'}).limit(perPage).skip(skipPages).exec((err,foundTours)=>{
             if (err) {
-                console.log();
+                console.log(err);
             } else {
                 outboundTours = foundTours;
                 // TÌM SỐ PAGES PHẢI TẠO
@@ -352,7 +351,14 @@ app.get("/tours/tour-nuoc-ngoai/:page",function(req,res){
 
 app.get("/login", function(req,res){
     let errors = [];
-    res.render("login",{errors :errors});
+    let isAuthenticated = req.isAuthenticated();
+    //NẾU ĐÃ ĐĂNG NHẬP THÌ QUAY VỀ "/"
+    if(isAuthenticated)
+    {
+        res.redirect("/");
+    } else {
+        res.render("login",{errors :errors});
+    }
 });
 
 app.post("/login", function(req,res){
@@ -384,7 +390,6 @@ app.post("/login", function(req,res){
             res.render("login",{errors : errors});
         }
     });
-    
 
 });
 
@@ -409,7 +414,14 @@ app.get("/logout", function(req,res){
 
 app.get("/register", function(req,res){
     let errors = [];
-    res.render("register",{errors:errors});
+    let isAuthenticated = req.isAuthenticated();
+    //NẾU ĐÃ ĐĂNG NHẬP THÌ QUAY VỀ "/"
+    if(isAuthenticated)
+    {
+        res.redirect("/");
+    } else {
+        res.render("register",{errors:errors});
+    }
 });
 
 app.post("/register",function(req,res){
@@ -493,7 +505,7 @@ app.get("/admin/all-tours/tour-trong-nuoc/:page",function(req,res){
             if(foundUser.isAdmin === true){
                 Tour.find({type: "tour-trong-nuoc"}).sort({date: 'desc'}).limit(perPage).skip(skipPages).exec((err,foundTours)=>{
                     if (err) {
-                        console.log();
+                        console.log(err);
                     } else {
                         domesticTours = foundTours;
                         // TÌM SỐ PAGES PHẢI TẠO
@@ -555,7 +567,7 @@ app.get("/admin/all-tours/tour-nuoc-ngoai/:page",function(req,res){
             if(foundUser.isAdmin === true){
                 Tour.find({type: "tour-nuoc-ngoai"}).sort({date: 'desc'}).limit(perPage).skip(skipPages).exec((err,foundTours)=>{
                     if (err) {
-                        console.log();
+                        console.log(err);
                     } else {
                         outboundTours = foundTours;
                         // TÌM SỐ PAGES PHẢI TẠO
@@ -565,14 +577,8 @@ app.get("/admin/all-tours/tour-nuoc-ngoai/:page",function(req,res){
                             } else {
                                 if(allTours.length%perPage === 0 ){
                                     totalPages = allTours.length/perPage ;
-                                    // console.log("TRUONG HOP === 0");
-                                    // console.log("domesticTours length" + allTours.length);
-                                    // console.log("totalPages"+ totalPages);
                                 } else {
                                     totalPages = Math.floor(allTours.length/perPage) + 1;
-                                    // console.log("TRUONG HOP != 0");
-                                    // console.log("domesticTours length" + allTours.length);
-                                    // console.log("totalPages"+ totalPages);
                                 }
                                 // TÌM PREV PAGE
                                 if (page <= 1) {
@@ -636,7 +642,6 @@ app.get("/admin/delete/tour-trong-nuoc/:tourId",function(req,res){
                                         if (err) {
                                             console.log(err);
                                         } else {
-                                            console.log("Username người mua "+foundUser.username);
                                             Transaction.findByIdAndDelete(transaction.id, function (err) {
                                                 if (err) {
                                                     console.log(err);
@@ -679,9 +684,9 @@ app.get("/admin/delete/tour-nuoc-ngoai/:tourId",function(req,res){
                                 console.log(err);
                             } else {
                                 userId = foundTransaction.customerID;
-                                console.log("User người mua"+ userId);           
+                                // console.log("User người mua"+ userId);           
                                 tourId = foundTransaction.tourId;
-                                console.log("TOur người mua" + tourId);
+                                // console.log("TOur người mua" + tourId);
                                 User.findOneAndUpdate({_id : userId},
                                     {$pull: {transactions:{_id: transaction.id}}},
                                     function(err, foundUser){
@@ -775,11 +780,7 @@ app.get("/admin/transaction/delete/:transId", function(req,res){
                     console.log(err);
                 } else {
                     userId = foundTransaction.customerID;
-                    console.log("User người mua"+ userId);
-
                     tourId = foundTransaction.tourId;
-                    console.log("TOur người mua" + tourId);
-
                     User.findOneAndUpdate({_id : userId},
                         {$pull: {transactions:{_id: req.params.transId}}},
                         function(err, foundUser){
@@ -832,7 +833,9 @@ app.get("/user/buy-tour/:tourId",function(req,res){
                     if (err) {
                         console.log(err);
                     } else {
-                        res.render("buyTour",{tour: foundTour, user : foundUser,isAdmin: isAdmin, errors : errors,
+                        res.render("buyTour",{tour: foundTour, user : foundUser,
+                            isAdmin: isAdmin, 
+                            errors : errors,
                             messages : messages,
                             isAuthenticated:isAuthenticated});
                     }
@@ -846,6 +849,7 @@ app.get("/user/buy-tour/:tourId",function(req,res){
 
 app.post("/user/buy-tour/:tourId",function(req,res){
     // KIỂM TRA CÓ ĐĂNG NHẬP CHƯA NẾU CHƯA RREDIRECT VỀ "/"
+    // CẦN ISADMIN ĐỂ RENDER
     // NẾU ĐÃ ĐĂNG NHẬP TÌM TOUR BẰNG TOUR ID, SO SANH AVAILABLE SLOTS CÓ < HƠN SLOTS CẦN MUA KHÔNG
         // NẾU BÉ HƠN PUSH LỖI "nOT ENOUGH SLOTS" VÀO ERRORS
         // KHÔNG THÌ TẠO TRANSACTION, SAVE() TRANSACTION, PUSH VÀO FOUNDTOUR.TRANSACTIONS, AVAILABLE_SLOTS - SLOTS MUA VÀ SAVE() FOUNDTOUR
@@ -863,7 +867,7 @@ app.post("/user/buy-tour/:tourId",function(req,res){
     let year = date.getFullYear();
 
     if(isAuthenticated){
-
+        const isAdmin = req.user.isAdmin;
         User.findById(userId, function(err,foundUser){
             if (err) {
                 console.log(err);
@@ -874,7 +878,11 @@ app.post("/user/buy-tour/:tourId",function(req,res){
                     } else {
                         if(Number(req.body.slots) > foundTour.available_slots){
                             errors.push("Not enough slots");
-                            res.render("buyTour",{tour: foundTour, user : foundUser, errors : errors, messages : messages});
+                            res.render("buyTour",{tour: foundTour, user : foundUser,
+                                isAdmin: isAdmin, 
+                                errors : errors,
+                                messages : messages,
+                                isAuthenticated:isAuthenticated});
                         } else {
                             const transaction = new Transaction({
                                 customerID: userId,
@@ -891,8 +899,11 @@ app.post("/user/buy-tour/:tourId",function(req,res){
                             foundUser.transactions.push(transaction);
                             foundUser.save();
                             messages.push("Sucessfully purchased ");
-                            res.render("buyTour",{tour: foundTour, user : foundUser, errors : errors, messages : messages});
-                            
+                            res.render("buyTour",{tour: foundTour, user : foundUser,
+                                isAdmin: isAdmin, 
+                                errors : errors,
+                                messages : messages,
+                                isAuthenticated:isAuthenticated});                            
                         }
                     }
                 });
