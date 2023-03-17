@@ -817,7 +817,6 @@ app.get("/admin/transaction/delete/:transId", function(req,res){
 });
 
 app.get("/user/buy-tour/:tourId",function(req,res){
-    // PHẢI ĐƯA DÒNG const userId = req.user.id; VÀO VÒNG IF ĐÃ AUTHENTICATED, VÌ NẾU CHƯA ĐĂNG NHẬP THÌ DÒNG NÀY LỖI (KO CÓ USERID)
     let isAuthenticated = req.isAuthenticated();
     const tourId = req.params.tourId;
     let errors = [];
@@ -843,12 +842,12 @@ app.get("/user/buy-tour/:tourId",function(req,res){
             }
         })
     } else {
-        res.redirect("/");
+        res.redirect("/login");
     }
 });
 
 app.post("/user/buy-tour/:tourId",function(req,res){
-    // KIỂM TRA CÓ ĐĂNG NHẬP CHƯA NẾU CHƯA RREDIRECT VỀ "/"
+    // KIỂM TRA CÓ ĐĂNG NHẬP CHƯA NẾU CHƯA RREDIRECT VỀ "/login"
     // CẦN ISADMIN ĐỂ RENDER
     // NẾU ĐÃ ĐĂNG NHẬP TÌM TOUR BẰNG TOUR ID, SO SANH AVAILABLE SLOTS CÓ < HƠN SLOTS CẦN MUA KHÔNG
         // NẾU BÉ HƠN PUSH LỖI "nOT ENOUGH SLOTS" VÀO ERRORS
@@ -911,7 +910,7 @@ app.post("/user/buy-tour/:tourId",function(req,res){
         });
         
     } else {
-        res.redirect("/");
+        res.redirect("/login");
     }
 });
 
@@ -971,7 +970,6 @@ app.get("/user/my-tours",function(req,res){
 
 app.get("/tours/:type/:destination/:tourId", function(req,res){
     let isAuthenticated = req.isAuthenticated();
-    //TRƯỜNG HỢP CHƯA LOGIN THÌ CHƯA CÓ ISADMIN NÊN BÁO LỖI ISADMIN  undefined .
     let isAdmin = false;
     if (isAuthenticated){
         isAdmin = req.user.isAdmin;
