@@ -627,42 +627,50 @@ app.get("/admin/delete/tour-trong-nuoc/:tourId",function(req,res){
                 //XÓA TOUR THÌ PHẢI XÓA LUÔN CÁC TRANSACTION CÓ TRONG USER ĐÃ MUA TOUR, TRANSACTION ĐÃ TẠO
                 //KHÔNG CẦN XÓA TRANSACTION TRONG TOUR VÌ OBJECT TOUR BỊ XÓA THÌ TRANSACTIONS CŨNG BỊ XÓA
                 Tour.findById(req.params.tourId, function(err, foundTour){
-                    foundTour.transactions.forEach(function(transaction){
-                        Transaction.findById(transaction.id, function (err,foundTransaction) {
+                    //KIỂM TRA TOUR CÓ AI MUA KHÔNG, CÓ THÌ XÓA TRANSACNTION TRONG USER.TRANSACTIONS VÀ TRANSACTION TRONG TRANSACTIONS
+                    if(foundTour.transactions.length){
+                        foundTour.transactions.forEach(function(transaction){
+                            Transaction.findById(transaction.id, function (err,foundTransaction) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    userId = foundTransaction.customerID;
+                                    tourId = foundTransaction.tourId;
+                                    User.findOneAndUpdate({_id : userId},
+                                        {$pull: {transactions:{_id: transaction.id}}},
+                                        function(err, foundUser){
+                                            if (err) {
+                                                console.log(err);
+                                            } else {
+                                                Transaction.findByIdAndDelete(transaction.id, function (err) {
+                                                    if (err) {
+                                                        console.log(err);
+                                                    } else {
+                                                        Tour.findByIdAndDelete(req.params.tourId, function(err){
+                                                            if (err) {
+                                                                console.log(err);
+                                                            } else {
+                                                                res.redirect("/admin/all-tours/tour-trong-nuoc/1");
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });                 
+                                }
+                            });
+                        });
+                    //KHÔNG AI MUA THÌ CỨ XÓA TOUR 
+                    } else {
+                        Tour.findByIdAndDelete(req.params.tourId, function(err){
                             if (err) {
                                 console.log(err);
                             } else {
-                                userId = foundTransaction.customerID;
-                                console.log("User người mua"+ userId);           
-                                tourId = foundTransaction.tourId;
-                                console.log("TOur người mua" + tourId);
-                                User.findOneAndUpdate({_id : userId},
-                                    {$pull: {transactions:{_id: transaction.id}}},
-                                    function(err, foundUser){
-                                        if (err) {
-                                            console.log(err);
-                                        } else {
-                                            Transaction.findByIdAndDelete(transaction.id, function (err) {
-                                                if (err) {
-                                                    console.log(err);
-                                                } else {
-                                                    Tour.findByIdAndDelete(req.params.tourId, function(err){
-                                                        if (err) {
-                                                            console.log(err);
-                                                        } else {
-                                                            res.redirect("/admin/all-tours/tour-trong-nuoc/1");
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        }
-                                    });                 
+                                res.redirect("/admin/all-tours/tour-trong-nuoc/1");
                             }
                         });
-                    });
-                });
-
-                
+                    }
+                });  
             } else {
                 res.redirect("/");
             }
@@ -674,44 +682,55 @@ app.get("/admin/delete/tour-trong-nuoc/:tourId",function(req,res){
 
 app.get("/admin/delete/tour-nuoc-ngoai/:tourId",function(req,res){
     let isAuthenticated = req.isAuthenticated();
+    let userId = "";
+    let tourId = "";
     if(isAuthenticated){
         User.findById(req.user.id, function(err,foundUser){
             if(foundUser.isAdmin === true){
                 Tour.findById(req.params.tourId, function(err, foundTour){
-                    foundTour.transactions.forEach(function(transaction){
-                        Transaction.findById(transaction.id, function (err,foundTransaction) {
+                    //TOUR CÓ NGƯỜI MUA THÌ TÌM TRANSACTION TRONG USER MUA VÀ TRONG TRANSACTIONS ĐỂ XÓA RỒI MỚI XÓA TOUR
+                    if(foundTour.transactions.length){
+                        foundTour.transactions.forEach(function(transaction){
+                            Transaction.findById(transaction.id, function (err,foundTransaction) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    userId = foundTransaction.customerID;
+                                    tourId = foundTransaction.tourId;
+                                    User.findOneAndUpdate({_id : userId},
+                                        {$pull: {transactions:{_id: transaction.id}}},
+                                        function(err, foundUser){
+                                            if (err) {
+                                                console.log(err);
+                                            } else {
+                                                Transaction.findByIdAndDelete(transaction.id, function (err) {
+                                                    if (err) {
+                                                        console.log(err);
+                                                    } else {
+                                                        Tour.findByIdAndDelete(req.params.tourId, function(err){
+                                                            if (err) {
+                                                                console.log(err);
+                                                            } else {
+                                                                res.redirect("/admin/all-tours/tour-nuoc-ngoai/1");
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });                 
+                                }
+                            });
+                        });
+                    //TOUR KHÔNG AI MUA XÓA BÌNH THƯỜNG
+                    } else {
+                        Tour.findByIdAndDelete(req.params.tourId, function(err){
                             if (err) {
                                 console.log(err);
                             } else {
-                                userId = foundTransaction.customerID;
-                                // console.log("User người mua"+ userId);           
-                                tourId = foundTransaction.tourId;
-                                // console.log("TOur người mua" + tourId);
-                                User.findOneAndUpdate({_id : userId},
-                                    {$pull: {transactions:{_id: transaction.id}}},
-                                    function(err, foundUser){
-                                        if (err) {
-                                            console.log(err);
-                                        } else {
-                                            console.log("Username người mua "+foundUser.username);
-                                            Transaction.findByIdAndDelete(transaction.id, function (err) {
-                                                if (err) {
-                                                    console.log(err);
-                                                } else {
-                                                    Tour.findByIdAndDelete(req.params.tourId, function(err){
-                                                        if (err) {
-                                                            console.log(err);
-                                                        } else {
-                                                            res.redirect("/admin/all-tours/tour-nuoc-ngoai/1");
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        }
-                                    });                 
+                                res.redirect("/admin/all-tours/tour-nuoc-ngoai/1");
                             }
                         });
-                    });
+                    }
                 });
             } else {
                 res.redirect("/");
