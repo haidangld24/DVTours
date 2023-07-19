@@ -592,8 +592,6 @@ app.get("/admin/all-tours/tour-nuoc-ngoai/:page",function(req,res){
                                 } else {
                                     nextPage = page + 1;
                                 }
-                                // console.log("prevPage là : "+ prevPage);
-                                // console.log("nextPage là : "+ nextPage);
                                 res.render("allOutboundTours",{isAuthenticated: isAuthenticated, 
                                     outboundTours : outboundTours,
                                     page: page,
