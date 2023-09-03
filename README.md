@@ -35,7 +35,7 @@ And Connected to MongoDB cloud hosted on Atlas
   - Password: 123456
 
 ## Run locally
-1. Add .env file with MONGO_URL
+1. Add .env file with CLIENT_ID, CLIENT_SECRET, USERNAME_ATLAS, PASSWORD_ATLAS
 2. Run `npm install`
 3. Run `nodemon app.js` 
 4. visit [http://localhost:3000 ↗](http://localhost:3000)
